@@ -22,4 +22,13 @@ class Sudoku
     end
   end
 
+  def possible(y,x,n)
+    for i in 0..9 do
+      if @grid[y][i] == n
+        return false
+      end
+    end
+
+  end
+
 end
