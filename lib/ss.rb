@@ -23,7 +23,7 @@ class Sudoku
   end
 
   def possible(y,x,n)
-
+    puts "Input = #{y},#{x},#{n}"
     for i in 0..8 do
       if @grid[y][i] == n
         return false
