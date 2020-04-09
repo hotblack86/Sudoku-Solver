@@ -12,4 +12,10 @@ RSpec.describe Sudoku do
     expect(sudoku.possible(4,4,5)).to eq(true)
   end
 
+  it '#possible Places number at possible position' do
+    sudoku = Sudoku.new
+    sudoku.possible(4,4,5)
+    expect(sudoku.grid[4][4]).to eq(5)
+  end
+
 end

@@ -46,7 +46,7 @@ class Sudoku
         end
       end
     end
-
+    @grid[y][x] = n
     return true
   end
 
