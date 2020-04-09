@@ -23,22 +23,21 @@ class Sudoku
   end
 
   def possible(y,x,n)
-    puts "Input = #{y},#{x},#{n}"
+    # y axis
     for i in 0..8 do
       if @grid[y][i] == n
         return false
       end
     end
-
+    # x axis
     for i in 0..8 do
       if @grid[i][x] == n
         return false
       end
     end
-    
+    # 3 x 3 box
     x0 = (x / 3).floor() * 3
     y0 = (y / 3).floor() * 3
-
     for i in 0..2 do
       for j in 0..2 do
         if @grid[y0+i][x0+j] == n
@@ -49,5 +48,25 @@ class Sudoku
     @grid[y][x] = n
     return true
   end
+
+  def solve
+    for y in 0..8 do
+      for x in 0..8 do
+        if @grid[y][x] == 0
+          for n in 1..9 do
+            if possible(y,x,n)
+              @grid[y][x] = n
+              solve() # Recursion
+              @grid[y][x] = 0 # Backtracking
+            end
+          end
+          return
+        end
+      end
+    end 
+    print()
+  end
+
+
 
 end
