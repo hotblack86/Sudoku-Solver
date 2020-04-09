@@ -25,24 +25,18 @@ class Sudoku
   def possible(y,x,n)
     # y axis
     for i in 0..8 do
-      if @grid[y][i] == n
-        return false
-      end
+      return false if @grid[y][i] == n
     end
     # x axis
     for i in 0..8 do
-      if @grid[i][x] == n
-        return false
-      end
+      return false if @grid[i][x] == n
     end
     # 3 x 3 box
     x0 = (x / 3).floor() * 3
     y0 = (y / 3).floor() * 3
     for i in 0..2 do
       for j in 0..2 do
-        if @grid[y0+i][x0+j] == n
-          return false
-        end
+        return false if @grid[y0+i][x0+j] == n
       end
     end
     @grid[y][x] = n
